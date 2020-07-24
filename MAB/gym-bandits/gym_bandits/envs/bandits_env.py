@@ -9,9 +9,11 @@ class KArmedBandits(gym.Env):
 
     r_dist:
         The payoffs (rewards) of each lever. It's defined as a list of means and standard deviations of a normal distribution for each lever. (called q*(a))
+    non_staty:
+        If set to True, the reward distributions change over time by incrementing each q*(a) of a certain sampled amount from a normal distibution with mean=0 and stdev=0.01. This makes it so the environment is non-stationary.
     """
 
-    def __init__(self, r_dist):
+    def __init__(self, r_dist, non_stat=False):
         for reward in r_dist:
             if not isinstance(reward, list):
                 raise ValueError("r_dist must be in the format [[mean, stdev], [mean, stdev], ...]")
@@ -20,6 +22,7 @@ class KArmedBandits(gym.Env):
 
         self.r_dist = r_dist
         self.k_bandits = len(r_dist)
+        self.non_stat = non_stat
         self.action_space = spaces.Discrete(self.k_bandits)
         self.observation_space = spaces.Discrete(1) # Nonassociative Bandits
 
@@ -34,6 +37,11 @@ class KArmedBandits(gym.Env):
 
         reward = 0
         done = True
+
+        if self.non_stat:
+            # Non-stationary update
+            inc = np.random.normal(0.0, 0.01)
+            self.r_dist = [(mu+inc, sigma) for (mu, sigma) in self.r_dist]
 
         reward = np.random.normal(self.r_dist[action][0], self.r_dist[action][1])
 
