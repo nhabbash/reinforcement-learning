@@ -21,9 +21,9 @@ class KArmedBandits(gym.Env):
                 raise ValueError("Every stdev in the rewards has to be greater than 0")
 
         self.r_dist = r_dist
-        self.k_bandits = len(r_dist)
+        self.k = len(r_dist)
         self.non_stat = non_stat
-        self.action_space = spaces.Discrete(self.k_bandits)
+        self.action_space = spaces.Discrete(self.k)
         self.observation_space = spaces.Discrete(1) # Nonassociative Bandits
 
         self._seed()
@@ -39,9 +39,9 @@ class KArmedBandits(gym.Env):
         done = True
 
         if self.non_stat:
-            # Non-stationary update
-            inc = np.random.normal(0.0, 0.01)
-            self.r_dist = [(mu+inc, sigma) for (mu, sigma) in self.r_dist]
+            # Non-stationary independent random walk of q*(a)
+            inc = np.random.normal(0.0, 0.01, self.k)
+            self.r_dist = [(mu+inc[idx], sigma) for idx, (mu, sigma) in enumerate(self.r_dist)]
 
         reward = np.random.normal(self.r_dist[action][0], self.r_dist[action][1])
 
