@@ -8,15 +8,14 @@ The defined environment is `karmedbandits-v0`.
 
 # Installation
 ```sh
-cd gym-bandits
-pip install -e . 
+pip install -e gym-bandits # From ../gym-bandits
 ```
 
 # Usage
 
 ```python
 import gym
-env = gym.make('gym_bandits:karmedbandits-v0')
+env = gym.make('gym_bandits:karmedbandits-v0', r_dist=reward_distribution, non_stat=False)
 ```
 
 # Notes

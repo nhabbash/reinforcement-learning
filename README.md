@@ -3,18 +3,18 @@ TODO, RL stuff
 
 ## Table of contents
 * Multi-armed Bandits
-    * Bandits environment in OpenAI Gym
-    * ε-greedy Bandits implementation
-    * Upper Confidence Bound Bandits implementation
-    * Exponential-recency weighting for non-stationary environment implementation
-    * Gradient Bandits implementation (TODO)
+    * Bandits environment in OpenAI Gym implementation (k-Armed w/ optional non-stationarity)
+    * ε-greedy implementation w/ sample-average action estimation
+    * Upper Confidence Bound implementation
+    * Exponential-recency weighting action estimation 
+    * Gradient implementation (TODO)
 
 # Prerequisites
 * Conda
 
 # Resources
 * [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/RLbook2018.pdf)
-* [RL resource](https://github.com/dennybritz/reinforcement-learning)
+* [RL resources](https://github.com/dennybritz/reinforcement-learning)
 
 ## Authors
 * **Nassim Habbash** - [nhabbash](https://github.com/nhabbash)
