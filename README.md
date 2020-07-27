@@ -2,12 +2,15 @@
 TODO, RL stuff
 
 ## Table of contents
-* Multi-armed Bandits
+* [Multi-armed Bandits](./MAB)
     * Bandits environment in OpenAI Gym implementation (k-Armed w/ optional non-stationarity)
-    * ε-greedy implementation w/ sample-average action estimation
+    * ε-greedy implementation
     * Upper Confidence Bound implementation
-    * Exponential-recency weighting action estimation 
-    * Gradient implementation (TODO)
+    * Gradient implementation
+* [Dynamic Programming](./DP)
+    * Policy Evaluation
+    * Policy Iteration
+    * Value Iteration
 
 # Prerequisites
 * Conda

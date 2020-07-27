@@ -1,7 +1,5 @@
 import numpy as np
 import gym
-from gym import error, spaces, utils
-from gym.utils import seeding
 
 class KArmedBandits(gym.Env):
     """
@@ -9,9 +7,10 @@ class KArmedBandits(gym.Env):
 
     r_dist:
         The payoffs (rewards) of each lever. It's defined as a list of means and standard deviations of a normal distribution for each lever. (called q*(a))
-    non_staty:
+    non_stat:
         If set to True, the reward distributions change over time by incrementing each q*(a) of a certain sampled amount from a normal distibution with mean=0 and stdev=0.01. This makes it so the environment is non-stationary.
     """
+    metadata = {'render.modes': ['human', 'ansi', 'text']}
 
     def __init__(self, r_dist, non_stat=False):
         for reward in r_dist:
@@ -23,14 +22,8 @@ class KArmedBandits(gym.Env):
         self.r_dist = r_dist
         self.k = len(r_dist)
         self.non_stat = non_stat
-        self.action_space = spaces.Discrete(self.k)
-        self.observation_space = spaces.Discrete(1) # Nonassociative Bandits
-
-        self._seed()
-        
-    def _seed(self, seed=None):
-        self.np_random, seed = seeding.np_random(seed)
-        return[seed]
+        self.action_space = gym.spaces.Discrete(self.k)
+        self.observation_space = gym.spaces.Discrete(1) # Nonassociative Bandits
 
     def step(self, action):
         assert self.action_space.contains(action)
@@ -46,9 +39,6 @@ class KArmedBandits(gym.Env):
         reward = np.random.normal(self.r_dist[action][0], self.r_dist[action][1])
 
         return 0, reward, done, {}
-    
-    def reset(self):
-        return 0
     
     def render(self, mode='human', close='False'):
         pass
