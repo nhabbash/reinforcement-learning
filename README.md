@@ -1,5 +1,5 @@
 ## Overview
-TODO, RL stuff
+Reinforcement Learning algorithms implementations.
 
 ## Table of contents
 * [Multi-armed Bandits](./MAB)
@@ -15,7 +15,7 @@ TODO, RL stuff
     * MC Control - On-policy first-visit ε-greedy
     * MC Control - Off-policy every-visit w/ weighted important sampling
 * [Temporal Difference](./TD)
-    *
+    * 
 
 # Prerequisites
 * Conda
@@ -24,7 +24,7 @@ TODO, RL stuff
 
 # Resources
 * [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/RLbook2018.pdf)
-* [RL exercises, environments and implementations](https://github.com/dennybritz/reinforcement-learning)
+* [RL algorithms, environments and resources](https://github.com/dennybritz/reinforcement-learning)
 
 ## Authors
 * **Nassim Habbash** - [nhabbash](https://github.com/nhabbash)
