@@ -11,11 +11,12 @@ Reinforcement Learning algorithms implementations.
     * Policy Iteration (Policy Evaluation + Policy Improvement)
     * Value Iteration
 * [Monte-Carlo](./MC)
-    * MC Prediction - On-policy value function estimation
-    * MC Control - On-policy first-visit ε-greedy
-    * MC Control - Off-policy every-visit w/ weighted important sampling
+    * On-policy value function estimation
+    * On-policy first-visit ε-greedy 
+    * Off-policy every-visit w/ weighted important sampling
 * [Temporal Difference](./TD)
-    * 
+    * SARSA (On-policy)
+    * Q-Learning (Off-policy)
 
 # Prerequisites
 * Conda

@@ -1,7 +1,7 @@
 import numpy as np
 import gym
 
-class KArmedBandits(gym.Env):
+class KArmedBanditsEnv(gym.Env):
     """
     Bandit environment base to allow agents to interact with the class k-armed bandits as defined in Sutton and Barto's Reinforcement Learning: An Introduction - Chapter 2
 
