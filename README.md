@@ -3,7 +3,7 @@ Reinforcement Learning algorithms implementations.
 
 ## Table of contents
 * [Multi-armed Bandits](./MAB)
-    * Bandits environment in OpenAI Gym implementation (k-armed w/ optional non-stationarity)
+    * Bandits environment implementation (k-armed w/ optional non-stationarity)
     * ε-greedy policy
     * Upper Confidence Bound policy
     * Policy gradient
@@ -19,11 +19,17 @@ Reinforcement Learning algorithms implementations.
     * Q-Learning
     * Expected SARSA
     * Double Q-Learning
+* [n-step Bootstrapping](./NB) (TODO maybe)
+* [Planning and Learning](./PL)
+    * Maze environment implementation
+    * Dyna-Q
+    * Dyna-Q+
 
 # Prerequisites
 * Conda
 
 # Installation
+
 
 # Resources
 * [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/RLbook2018.pdf)
