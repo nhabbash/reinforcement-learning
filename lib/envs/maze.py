@@ -45,7 +45,7 @@ class MazeEnv(discrete.DiscreteEnv):
             y, x = it.multi_index
 
             is_done = lambda s: s == goal_i
-            reward = 1.0 if is_done(s) else 0.0
+            reward = 0.0 if is_done(s) else -1.0
         
             # P[s][a] = (prob, next_state, reward, is_done)
             P[s] = {a : [] for a in range(nA)}
@@ -54,7 +54,7 @@ class MazeEnv(discrete.DiscreteEnv):
             ns_right = s if x == (MAX_X - 1) or collision(y, x+1) else s + 1
             ns_down = s if y == (MAX_Y - 1) or collision(y+1, x) else s + MAX_X
             ns_left = s if x == 0 or collision(y, x-1) else s - 1
-
+                
             P[s][UP] = [(1.0, ns_up, reward, is_done(ns_up))]
             P[s][RIGHT] = [(1.0, ns_right, reward, is_done(ns_right))]
             P[s][DOWN] = [(1.0, ns_down, reward, is_done(ns_down))]
@@ -92,17 +92,16 @@ class MazeEnv(discrete.DiscreteEnv):
         grid = np.arange(self.nS).reshape(self.shape)
         it = np.nditer(grid, flags=['multi_index'])
 
-        blocks_x = blocks_y = []
-        blocks_x, blocks_y = zip(*[np.unravel_index(e, (6, 9)) for e in self.blocks])
-
         while not it.finished:
             s = it.iterindex
             y, x = it.multi_index
 
             if self.s == s:
                 output = " x "
-            elif s == self.goal or s == self.start:
-                output = " T "
+            elif [y, x] == self.goal:
+                output = " G "
+            elif [y, x] == self.start:
+                output = " S "
             elif s in self.blocks:
                 output = " | "
             else:

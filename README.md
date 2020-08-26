@@ -23,7 +23,7 @@ Reinforcement Learning algorithms implementations.
 * [Planning and Learning](./PL)
     * Maze environment implementation
     * Dyna-Q
-    * Dyna-Q+
+    * Dyna-Q+ (maybe)
 
 # Prerequisites
 * Conda
