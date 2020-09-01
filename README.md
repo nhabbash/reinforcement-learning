@@ -19,11 +19,12 @@ Reinforcement Learning algorithms implementations.
     * Q-Learning
     * Expected SARSA
     * Double Q-Learning
-* [n-step Bootstrapping](./NB) (TODO maybe)
+* [n-step Bootstrapping](./NB) (TODO)
 * [Planning and Learning](./PL)
     * Maze environment implementation
     * Dyna-Q
-    * Dyna-Q+ (maybe)
+    * Dyna-Q w/ prioritized sweeping
+    * Dyna-Q+
 
 # Prerequisites
 * Conda
