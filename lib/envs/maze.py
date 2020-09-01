@@ -44,8 +44,8 @@ class MazeEnv(discrete.DiscreteEnv):
             s = it.iterindex
             y, x = it.multi_index
 
-            is_done = lambda s: s == goal_i
-            reward = 0.0 if is_done(s) else -1.0
+            is_done = lambda ns: ns == goal_i
+            reward = lambda ns: 1.0 if is_done(ns) else 0.0
         
             # P[s][a] = (prob, next_state, reward, is_done)
             P[s] = {a : [] for a in range(nA)}
@@ -55,10 +55,10 @@ class MazeEnv(discrete.DiscreteEnv):
             ns_down = s if y == (MAX_Y - 1) or collision(y+1, x) else s + MAX_X
             ns_left = s if x == 0 or collision(y, x-1) else s - 1
                 
-            P[s][UP] = [(1.0, ns_up, reward, is_done(ns_up))]
-            P[s][RIGHT] = [(1.0, ns_right, reward, is_done(ns_right))]
-            P[s][DOWN] = [(1.0, ns_down, reward, is_done(ns_down))]
-            P[s][LEFT] = [(1.0, ns_left, reward, is_done(ns_left))]
+            P[s][UP] = [(1.0, ns_up, reward(ns_up), is_done(ns_up))]
+            P[s][RIGHT] = [(1.0, ns_right, reward(ns_right), is_done(ns_right))]
+            P[s][DOWN] = [(1.0, ns_down, reward(ns_down), is_done(ns_down))]
+            P[s][LEFT] = [(1.0, ns_left, reward(ns_left), is_done(ns_left))]
 
             it.iternext()
 
